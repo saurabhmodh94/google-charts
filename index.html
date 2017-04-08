@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Google Charts - Simple Demo</title>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', { packages: ['corechart', 'line'] });
+		google.charts.setOnLoadCallback(drawBackgroundColor);
+		jsonResponce =
+			[
+				["01/01", 0],
+				["02/01", 10],
+				["03/01", 5],
+				["04/01", 20],
+				["05/01", 40],
+				["06/01", 13],
+				["07/01", 31],
+				["08/01", 23],
+				["09/01", 39],
+				["10/01", 25],
+				["11/01", 0],
+				["12/01", 10],
+				["13/01", 5],
+				["14/01", 20],
+				["15/01", 40],
+				["16/01", 13],
+				["17/01", 31],
+				["18/01", 23],
+				["19/01", 39],
+				["20/01", 43],
+				["21/01", 0],
+				["22/01", 10],
+				["23/01", 5],
+				["24/01", 20],
+				["25/01", 40],
+				["26/01", 13],
+				["27/01", 31],
+				["28/01", 23],
+				["29/01", 39],
+				["30/01", 29],
+			 	["31/01", 9]
+			];
+		function drawBackgroundColor() {
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Date');
+			data.addColumn('number', 'Working Hours');
+
+			data.addRows(jsonResponce);
+
+			var options = {
+
+				title: 'Last 30 days Working Hours',
+				height: 300,
+				chartArea: {
+					height: 100,
+					top: 100,
+				},
+				hAxis: {
+					title: 'Date', slantedText: true, slantedTextAngle: 90
+				},
+				vAxis: {
+					title: 'Working Hours'
+				}
+			};
+
+			var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+			chart.draw(data, options);
+		}
+	</script>
+</head>
+
+<body>
+	<div id="chart_div"></div>
+</body>
+
+</html>
